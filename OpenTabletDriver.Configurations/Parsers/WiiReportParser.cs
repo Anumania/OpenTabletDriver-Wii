@@ -1,15 +1,16 @@
 using OpenTabletDriver.Configurations.Parsers.Huion;
 using OpenTabletDriver.Configurations.Parsers.UCLogic;
-using OpenTabletDriver.Tablet;
+using OpenTabletDriver.Plugin.Tablet;
 
 namespace OpenTabletDriver.Configurations.Parsers
 {
-    public class WiiReportParser : IReportParser<IDeviceReport>
+    public class WiiReportParser : TabletReportParser
     {
-        public IDeviceReport Parse(byte[] data)
+        public override IDeviceReport Parse(byte[] data)
         {
-            return new WiiReport(data);
-
+            if (data[0] == 0x37)
+                return new WiiReport(data);
+            return new WiiReport(new byte[22]);
         }
     }
 }
