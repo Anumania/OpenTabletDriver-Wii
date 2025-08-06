@@ -26,4 +26,11 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="Configurations\Wii.json">
+      <TabletConfiguration>true</TabletConfiguration>
+    </AdditionalFiles>
+  </ItemGroup>
+
+
 </Project>

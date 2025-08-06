@@ -1,0 +1,23 @@
+{
+  "Name": "Wii Drawing Tablet",
+  "Specifications": {
+    "Digitizer": {
+      "Width": 168,
+      "Height": 106.4,
+      "MaxX": 1800,
+      "MaxY": 1800
+    },
+    "Pen": {
+      "MaxPressure": 255,
+      "ButtonCount": 2
+    }
+  },
+  "DigitizerIdentifiers": [
+    {
+      "VendorID": 1406,
+      "ProductID": 774,
+      "InputReportLength": 22,
+      "ReportParser": "OpenTabletDriver.Configurations.Parsers.WiiReportParser"
+    }
+  ]
+}
