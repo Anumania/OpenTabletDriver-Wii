@@ -8,7 +8,7 @@
       "MaxY": 1800
     },
     "Pen": {
-      "MaxPressure": 255,
+      "MaxPressure": 504,
       "Buttons": {
         "ButtonCount": 2
       }
@@ -22,7 +22,20 @@
       "VendorID": 1406,
       "ProductID": 774,
       "InputReportLength": 22,
-      "ReportParser": "OpenTabletDriver.Configurations.Parsers.WiiReportParser"
+      "OutputReportLength": 22,
+      "ReportParser": "OpenTabletDriver.Configurations.Parsers.WiiReportParser",
+      "OutputInitReport": [
+        "EwQ=", //these are IR initializers which i dont think we need
+        "GgQ=",
+        "EgQg", //init status continuous //0x20
+        "EZA=", //set LED 1 and 4
+        "EgQw", //init wii button continuous //0x30
+        "FgSkAPABVQ==", //extension initializer 1 
+        "FgSkAPsBAA==", //extension initializer 2
+        "EgQ0", //init extension button continuous //
+        "EgQ1", //init extension accelerometer continuous (wii tablet uses accelerometer data for pos)
+        "EgQ3" //init evil second extension continuous (this is both button and accel)
+      ]
     }
   ]
 }

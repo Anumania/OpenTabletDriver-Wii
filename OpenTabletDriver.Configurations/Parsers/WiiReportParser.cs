@@ -8,9 +8,10 @@ namespace OpenTabletDriver.Configurations.Parsers
     {
         public override IDeviceReport Parse(byte[] data)
         {
-            if (data[0] == 0x37)
+            //get the quadrant out. if the quadrant is too big, assume no pen is detected, so dont give a pen reading.
+            if (data[0] == 0x37 && data[18] != 255)
                 return new WiiReport(data);
-            return new WiiReport(new byte[22]);
+            return (new PassthroughReportParser()).Parse(data);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using OpenTabletDriver.Plugin.Tablet;
@@ -27,16 +28,18 @@ namespace OpenTabletDriver.Configurations.Parsers
             double _y = y * 1.4;
 
             y = (int)_y;
-            if (x < 3000)
-            {
-                Position = new Vector2
-                {
-                    X = x,
-                    Y = y
-                };
-            }
 
-            Pressure = (uint)(buff[offset + 3] - 8);
+            Position = new Vector2
+            {
+                X = x,
+                Y = y
+            };
+
+            Pressure = (uint)(buff[offset + 3] - 8) ; //pressure seems to max at 485
+            if ((buff[offset + 5] & 4) != 0)
+            {
+                Pressure += 255;
+            }
 
             PenButtons = new bool[]
             {
